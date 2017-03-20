@@ -20,42 +20,42 @@ ch2p0203c = [out{:}]; ch2p0203c =ch2p0203c(:);
 figure
 plot(1:length(ch2p0203c),ch2p0203c)
 
-out = DATA0206c.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0206c.dat.rawdata_power_ch2(:))));
+out = DATA0206c.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0206c = [out{:}]; ch2p0206c =ch2p0206c(:);
 figure
 plot(1:length(ch2p0206c),ch2p0206c)
 
-out = DATA0207d.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0207d.dat.rawdata_power_ch2(:))));
+out = DATA0207d.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0207d = [out{:}]; ch2p0207d =ch2p0207d(:);
 figure
 plot(1:length(ch2p0207d),ch2p0207d)
 
-out = DATA0208m.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0208m.dat.rawdata_power_ch2(:))));
+out = DATA0208m.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0208m = [out{:}]; ch2p0208m =ch2p0208m(:);
 figure
 plot(1:length(ch2p0208m),ch2p0208m)
 
-out = DATA0209a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0209a.dat.rawdata_power_ch2(:))));
+out = DATA0209a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0209a = [out{:}]; ch2p0209a =ch2p0209a(:);
 figure
 plot(1:length(ch2p0209a),ch2p0209a)
 
-out = DATA0210a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0210a.dat.rawdata_power_ch2(:))));
+out = DATA0210a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0210a = [out{:}]; ch2p0210a =ch2p0210a(:);
 figure
 plot(1:length(ch2p0210a),ch2p0210a)
 
-out = DATA0213a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0213a.dat.rawdata_power_ch2(:))));
+out = DATA0213a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0213a = [out{:}]; ch2p0213a =ch2p0213a(:);
 figure
 plot(1:length(ch2p0213a),ch2p0213a)
 
-out = DATA0214a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0214a.dat.rawdata_power_ch2(:))));
+out = DATA0214a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
 ch2p0214a = [out{:}]; ch2p0214a =ch2p0214a(:);
 figure
 plot(1:length(ch2p0214a),ch2p0214a)
 
-out = DATA0215a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0215a.dat.rawdata_power_ch2(:))));
-ch2p0215a = [out{:}]; ch2p0215a =ch2p0215a(:);
+out = DATA0215a.dat.rawdata_power_ch2(find(~cellfun(@isempty,DATA0203c.dat.rawdata_power_ch2(:))));
+ch2p0215a = [out{:}]; ch2p0215a =ch2p0214(:);
 figure
-plot(1:length(ch2p0215a),ch2p0215a)
+plot(1:length(ch2p0203c),ch2p0203c)
