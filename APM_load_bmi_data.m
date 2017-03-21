@@ -13,5 +13,3 @@ MOVE_DATA1={};
 for i=1:length(DAYS1) %stores all data for each control block as a struct in a cell entry of DATA.date+block.dat
     MOVE_DATA1{i} = load(strcat('C:\Users\andon\Desktop\Carmena_Rotation\nexusbmi-master\data2\dat',DAYS1{i},MOVE_BLOCKS1{i},'_.mat'));
 end
-
-
