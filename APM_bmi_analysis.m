@@ -153,3 +153,29 @@ end
 title('M1 Beta Power in Controlled Movements (200ms resolution)')
 xlabel('Time (s)')
 ylabel('M1 Beta Power (Normalized to Median)')
+
+%%% Autocorrelation Plots
+figure
+subplot(2,2,1)
+[ACF,lags,bounds] = autocorr(MOVE_M1_P1r0,200,2);
+autocorr(MOVE_M1_P1r0,200,2)
+title('Autocorrelation of M1 Beta Power (021417a)')
+bounds
+
+subplot(2,2,2)
+[ACF,lags,bounds] = autocorr(MOVE_STN_P1r0,200,2);
+autocorr(MOVE_STN_P1r0,200,2)
+title('Autocorrelation of STN Beta Power (021417a)')
+bounds
+
+subplot(2,2,3)
+[ACF,lags,bounds] = autocorr(MOVE_M1_Pr0,200,2);
+autocorr(MOVE_M1_Pr0,200,2)
+title('Autocorrelation of M1 Beta Power')
+bounds
+
+subplot(2,2,4)
+[ACF,lags,bounds] = autocorr(MOVE_STN_Pr0,200,2);
+autocorr(MOVE_STN_Pr0,200,2)
+title('Autocorrelation of STN Beta Power')
+bounds

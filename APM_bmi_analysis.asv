@@ -78,12 +78,7 @@ title('M1 Beta Power in Controlled Movements (200ms resolution)')
 xlabel('Time (s)')
 ylabel('M1 Beta Power (Normalized to Median)')
 
-
-
-
-
-
-
+%%%%% Below only plots day 021417a%%%%
 
 MOVE_STN_P1 = [];
 all_beeps = [];
@@ -98,8 +93,6 @@ for i=1:length(DAYS1)
     MOVE_STN_P1 = vertcat(MOVE_STN_P1,stnplist_norm(:)); %concatenates current day/block to the previously iterated
 end
 add200ms = zeros(length(all_beeps),1);
-%all_beeps200 = [add200ms(rem(0:numel(all_beeps)-1,numel(add200ms))+1);all_beeps];
-%all_beeps200 = all_beeps200(:);
 
 all_beeps200 = zeros(2*length(all_beeps),1);
 for i=1:length(all_beeps200)
@@ -111,11 +104,12 @@ MOVE_STN_P1r0 = MOVE_STN_P1(find(MOVE_STN_P1~=0)); %removes 0 elements from STN 
 all_beepsr0 = all_beeps200(find(MOVE_STN_P1~=0)); %removes beep times where STN beta power is 0
 
 figure
+subplot(2,1,1)
 plot((1:length(MOVE_STN_P1r0))*.2,MOVE_STN_P1r0) %plots STN beta power data with 200ms resolution
 hold on;
 for i = 1:length(all_beepsr0)
     if all_beepsr0(i)==1
-        line([i,i]*.2,[-300,300],'Color','black')
+        line([i,i]*.2,[-250,250],'Color','black')
     else
     end
 end
@@ -148,14 +142,37 @@ end
 MOVE_M1_P1r0 = MOVE_M1_P1(find(MOVE_M1_P1~=0)); %removes 0 elements from M1 beta power
 all_beepsr0 = all_beeps200(find(MOVE_M1_P1~=0)); %removes beep times where M1 beta power is 0
 
-figure
-plot((1:length(MOVE_M1_P1r0))*.2,MOVE_M1_P1r0,) %plots M1 beta power data with 200ms resolution
+subplot(2,1,2)
+plot((1:length(MOVE_M1_P1r0))*.2,MOVE_M1_P1r0) %plots M1 beta power data with 200ms resolution
 for i = 1:length(all_beepsr0)
     if all_beepsr0(i)==1
-        line([i,i]*.2,[-300,300],'Color','black')
+        line([i,i]*.2,[-300,350],'Color','black')
     else
     end
 end
 title('M1 Beta Power in Controlled Movements (200ms resolution)')
 xlabel('Time (s)')
 ylabel('M1 Beta Power (Normalized to Median)')
+
+%%% Autocorrelation
+%%M1 at 021417a
+figure
+subplot(2,2,1)
+[ACF,lags,bounds] = autocorr(MOVE_M1_P1r0,200,2);
+title('Autocorrelation of M1 Beta Power (021417a)')
+autocorr(MOVE_M1_P1r0,200,2)
+
+subplot(2,2,2)
+[ACF,lags,bounds] = autocorr(MOVE_STN_P1r0,200,2);
+title('Autocorrelation of STN Beta Power (021417a)')
+autocorr(MOVE_M1_P1r0,200,2)
+
+subplot(2,2,3)
+[ACF,lags,bounds] = autocorr(MOVE_M1_Pr0,200,2);
+title('Autocorrelation of M1 Beta Power (021417a)')
+autocorr(MOVE_M1_P1r0,200,2)
+
+subplot(2,2,4)
+[ACF,lags,bounds] = autocorr(MOVE_M1_Pr0,200,2);
+title('Autocorrelation of M1 Beta Power (021417a)')
+autocorr(MOVE_M1_P1r0,200,2)
