@@ -179,3 +179,19 @@ subplot(2,2,4)
 autocorr(MOVE_STN_Pr0,200,2)
 title('Autocorrelation of STN Beta Power')
 bounds
+
+%%%Cross-Correlations
+[acor,lag] = xcorr(MOVE_M1_P1r0,MOVE_STN_P1r0,'coeff');
+figure
+subplot(2,1,1)
+plot(lag,acor)
+title('Cross-correlation of M1 & STN Beta Power (021417a)')
+xlabel('Lag Samples')
+ylabel('Cross-correlation')
+
+[acor,lag] = xcorr(MOVE_M1_Pr0,vertcat(MOVE_STN_Pr0,zeros(length(MOVE_M1_Pr0)-length(MOVE_STN_Pr0),1)),'coeff');
+subplot(2,1,2)
+plot(lag,acor)
+title('Cross-correlation of M1 & STN Beta Power')
+xlabel('Lag Samples')
+ylabel('Cross-correlation')
