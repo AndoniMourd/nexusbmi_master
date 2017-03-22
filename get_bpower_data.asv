@@ -1,0 +1,38 @@
+%%%%GET BETA POWER DATA%%%%
+function [move_STN_p,move_M1_p,beeps_STN,beeps_M1] = get_bpower_data(fulldata)
+
+for i=1:length(fulldata) %gets STN power
+    %gets beeps
+    beeps = fulldata{i}.dat.beep(1:fulldata{i}.dat.iter_cnt); %imports beep times (only for number of tasks)
+    
+    %gets STN power
+    stnpcell = fulldata{i}.dat.rawdata_power_ch2(find(~cellfun(@isempty,fulldata{i}.dat.rawdata_power_ch2(:)))); %loads STN beta power data & drops NaN elements
+    stnparray = [stnpcell{:}]; %converts STN beta power in 'stncell' from cell to array
+    stnplist = stnparray(:); %lists all STN beta power as single column (gives 200ms resolution)
+    stnplistr0 = stnplist(find(stnplist~=0)); %removes 0 elements from STN power list
+    move_STN_p{i} = stnplist-median(stnplistr0); %find the difference between each 200ms task and the median of the block
+    %beeps STN
+    beepsSTN = beeps(find(~cellfun(@isempty,fulldata{i}.dat.rawdata_power_ch2(:)))); %drops beeps for which there is NaN in power
+    beeps_STN{i} = zeros(2*length(beepsSTN),1); %array of zeros of length number of tasks at 200ms res
+    for i=1:length(beeps_STN{i})
+        if rem(i,2)==0
+            beeps_STN{i}=beepsSTN(i/2); %every even element in beeps_STN200 gets replaced with the value in all_beeps
+        end
+    end %adds a zero before each element in all_beeps.
+    beeps_STN{i} = beeps_STN{i}(find(stnplist~=0)); %removes beeps for which STN power = 0
+    
+    %gets M1 power
+    m1pcell = fulldata{i}.dat.rawdata_power_ch4(find(~cellfun(@isempty,fulldata{i}.dat.rawdata_power_ch4(:)))); %loads M1 beta power data & drops NaN elements
+    m1parray = [m1pcell{:}]; %converts M1 beta power in 'm1cell' from cell to array
+    m1plist = m1parray(:); %lists all M1 beta power as single column (gives 200ms resolution)
+    m1plistr0 = m1plist(find(m1plist~=0)); %removes 0 elements from M1 power list
+    move_M1_p{i} = m1plist-median(m1plistr0); %find the difference between each 200ms task and the median of the block
+    %beeps STN
+    beepsM1 = beeps(find(~cellfun(@isempty,fulldata{i}.dat.rawdata_power_ch4(:)))); %drops beeps for which there is NaN in power
+    beeps_M1{i} = zeros(2*length(beepsM1r0),1); %array of zeros of length number of tasks at 200ms res
+    for i=1:length(beeps_M1{i})
+        if rem(i,2)==0
+            beeps_M1{i}=beepsM1r0(i/2); %every even element in all_beeps200 gets replaced with the value in all_beeps
+        end %adds a zero before each element in all_beeps.
+    end
+end

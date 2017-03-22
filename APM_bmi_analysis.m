@@ -211,3 +211,5 @@ title('Aligned STN & M1 Beta Power (021417a)')
 xlabel('Time (s)')
 ylabel({'Beta Power','(Normalized to Median)'})
 legend('STN (shifted left 1.6s)','M1')%plots STN shifted to the left because it leads M1
+
+%%%%%Mean and Variance of STN and M1

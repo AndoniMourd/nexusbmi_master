@@ -1,0 +1,12 @@
+function [TEST] = load_bmi_data(days,move_blcks)
+
+whos move_blocks
+
+for i=1:length(days) %stores all data for each control block as a struct in a cell entry of DATA.date+block.dat
+    %a = days{i}
+    %for j=1:length(move_blcks)
+        %b = move_blcks{j}
+        TEST{i} = load(strcat('C:\Users\andon\Desktop\Carmena_Rotation\nexusbmi-master\data2\dat',days{1},b,'_.mat'));
+    end
+end
+end
