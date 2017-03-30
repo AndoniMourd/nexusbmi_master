@@ -1,14 +1,14 @@
 %%perform autocorrelations and cross-correlations
-%function auto_cross_corr(m1_bp,stn_bp) %input M1 and STN beta power data after editing
+function auto_cross_corr(m1_bp,stn_bp) %input M1 and STN beta power data after editing
 DAYS = {'020217','020317','020617','020717','020817','020917','021017','021317','021417','021517'};
 MOVE_BLOCKS = {'i','c','c','d','m','a','a','a','a','a'};
 
-m1_bp=MOVE_M1_P;
-stn_bp=MOVE_STN_P;
+%m1_bp=MOVE_M1_P;
+%stn_bp=MOVE_STN_P;
 
 %perform and plot cross-correlations
 for i=1:length(m1_bp)
-    [acor{i},lag{i},Bounds] = crosscorr(m1_bp{i},stn_bp{i},length(m1_bp{i})-1);%coeff scales y axis to -1 --> 1
+    [acor{i},lag{i},Bounds] = crosscorr(m1_bp{i},stn_bp{i},length(stn_bp{i})-1);%coeff scales y axis to -1 --> 1
     %calculate confidence intervals based on fisher's transform
     z_r=0.5*log((1+max(acor{i}))/(1-max(acor{i})));
     zeta_l = z_r-1.96*sqrt(1/(length(m1_bp{i})-3));
@@ -23,7 +23,7 @@ for i=1:length(m1_bp)
         dim=[.67 .225 .3 .3];
     end
     subplot(2,1,-rem(i,2)+2); 
-    crosscorr(stn_bp{i},m1_bp{i},length(m1_bp{i})-1); %plot(lag,acor{i}); %plots cross-corr
+    crosscorr(stn_bp{i},m1_bp{i},length(stn_bp{i})-1); %plot(lag,acor{i}); %plots cross-corr
     title(strcat('Cross-Correlation of STN on M1 Beta Power: ',DAYS{i},MOVE_BLOCKS{i}));
     str=strcat({['max r = ',num2str(max(acor{i}))],['CI: ',num2str(r_l),', ',num2str(r_u)]});
     annotation('textbox',dim,'String',str,'FitBoxToText','on')

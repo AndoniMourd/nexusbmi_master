@@ -7,5 +7,7 @@ MOVE_BLOCKS = {'i','c','c','d','m','a','a','a','a','a'};
 
 MOVE_DATA = load_bmi_data(DAYS,MOVE_BLOCKS);
 [MOVE_STN_P,MOVE_M1_P,BEEPS_STN,BEEPS_M1] = get_bpower_data(MOVE_DATA);
-%cross_corr(MOVE_M1_P,MOVE_STN_P); %input M1 and STN beta power data after editing
-%auto_corr(MOVE_M1_P,MOVE_STN_P); %input M1 and STN beta power data after editing
+plot_beta_power(MOVE_STN_P,MOVE_M1_P,BEEPS_STN,BEEPS_M1)
+cross_corr(MOVE_M1_P,MOVE_STN_P); %input M1 and STN beta power data after editing
+auto_corr(MOVE_M1_P,MOVE_STN_P); %input M1 and STN beta power data after editing
+avg_beep2beep(MOVE_STN_P,MOVE_M1_P,BEEPS_STN,BEEPS_M1)

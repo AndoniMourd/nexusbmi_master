@@ -82,8 +82,8 @@ ylabel('M1 Beta Power (Normalized to Median)')
 
 MOVE_STN_P1 = [];
 all_beeps = [];
-for i=1:length(DAYS1)
-    block_beeps = MOVE_DATA1{i}.dat.beep(1:MOVE_DATA1{i}.dat.iter_cnt); %imports beep times (only for number of tasks)
+for i=1:length(DAYS)
+    block_beeps = MOVE_DATA{i}.dat.beep(1:MOVE_DATA1{i}.dat.iter_cnt); %imports beep times (only for number of tasks)
     block_beeps = block_beeps(find(~cellfun(@isempty,MOVE_DATA1{i}.dat.rawdata_power_ch2(:)))); %drops beeps for which there is NaN in power
     stnpcell = MOVE_DATA1{i}.dat.rawdata_power_ch2(find(~cellfun(@isempty,MOVE_DATA1{i}.dat.rawdata_power_ch2(:)))); %loads STN beta power data & drops NaN elements
     stnparray = [stnpcell{:}]; %converts STN beta power in 'out' from cell to array
@@ -153,7 +153,7 @@ end
 title('M1 Beta Power in Controlled Movements (021417a - 200ms res.)')
 xlabel('Time (s)')
 ylabel('M1 Beta Power (Normalized to Median)')
-
+%{
 %%% Autocorrelation Plots. Repeated for all M1 & STN and for M1 & STN on
 %%% 021417a
 figure
@@ -190,7 +190,7 @@ plot(lag1,acor1);
 title('Cross-correlation of STN on M1 Beta Power (021417a)')
 xlabel('Lag')
 ylabel('Cross-correlation')
-[~,I1] = max(acor1); %finds the max cross-correlation. Sotres that value in I1
+[~,I1] = max(acor1); %finds the max cross-correlation. Sorts that value in I1
 lagDiff1 = lag1(I1); %difference in lag time
 M1_al1 = MOVE_STN_P1r0(lagDiff1+1:end); %crops M1 power data with the lag shift for aligned plotting
 time_M1_al1 = (0:length(M1_al1)-1)*.2; %makes time vector for cropped M1 power
@@ -201,6 +201,7 @@ plot(lag,acor);
 title('Cross-correlation of STN on M1 Beta Power')
 xlabel('Lag')
 ylabel('Cross-correlation')
+%}
 
 %%%%Plot aligned M1 and STN beta power based on cross-correlation max
 subplot(3,1,3);
