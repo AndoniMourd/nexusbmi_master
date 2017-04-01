@@ -1,12 +1,20 @@
 function plot_beta_power(STN_power_data,M1_power_data,STN_beeps_data,M1_beeps_data)
 
-%power_data = move_STN_p;
-%beeps_data = beeps_STN;
+% STN_power_data = MOVE_STN_P;
+% STN_beeps_data = BEEPS_STN;
+% M1_power_data = MOVE_M1_P;
+% M1_beeps_data = BEEPS_M1;
 
 all_STN_p = vertcat(STN_power_data{:});
 all_STN_b = vertcat(STN_beeps_data{:});
 all_M1_p = vertcat(M1_power_data{:});
 all_M1_b = vertcat(M1_beeps_data{:});
+day_length_STN = zeros(length(STN_power_data));
+day_length_M1 = zeros(length(M1_power_data));
+for i=1:length(STN_power_data)
+    day_lengths_STN(i) = length(STN_power_data{i});
+    day_lengths_M1(i) = length(M1_power_data{i});
+end
 
 %plot all STN
 figure
@@ -22,6 +30,9 @@ for i = 1:length(all_STN_b)
     else
     end
 end
+for i=1:length(day_lengths_STN)
+    line([sum(day_lengths_STN(1:i)),sum(day_lengths_STN(1:i))]*.2,[-300,300],'Color','red','LineStyle','--')%plots the vertical lines at each beep time
+end
 
 %plot all M1
 subplot(2,1,2)
@@ -36,7 +47,11 @@ for i = 1:length(all_M1_b)
     else
     end
 end
+for i=1:length(day_lengths_STN)
+    line([sum(day_lengths_STN(1:i)),sum(day_lengths_STN(1:i))]*.2,[-300,300],'Color','red','LineStyle','--')%plots the vertical lines at each beep time
+end
 
+%%plot just day 021417a
 figure
 subplot(2,1,1)
 plot((1:length(STN_power_data{9}))*.2,STN_power_data{9})

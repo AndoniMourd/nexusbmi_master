@@ -20,4 +20,4 @@ days = strcat(DAYS,MOVE_BLOCKS)';
 d = [days(:),local_max(:),med_notes,med_time,trial_time];
 t.ColumnName = {' Day & Block ',' Cross-Corr Local Max ',' Medication Notes         ',' Medication Time       ','Trial Time'};
 t.Data = d;
-t.Position = [35 115 550 200];
+t.Position = [35 115 475 200];
