@@ -18,7 +18,7 @@ end
 
 %plot all STN
 figure
-subplot(2,1,1)
+subplot(2,1,2)
 plot((1:length(all_STN_p))*.2,all_STN_p)
 title('STN Beta Power in Controlled Movements (200ms res.)')
 xlabel('Time (s)')
@@ -35,7 +35,7 @@ for i=1:length(day_lengths_STN)
 end
 
 %plot all M1
-subplot(2,1,2)
+subplot(2,1,1)
 plot((1:length(all_M1_p))*.2,all_M1_p)
 title('M1 Beta Power in Controlled Movements (200ms res.)')
 xlabel('Time (s)')
@@ -53,7 +53,7 @@ end
 
 %%plot just day 021417a
 figure
-subplot(2,1,1)
+subplot(2,1,2)
 plot((1:length(STN_power_data{9}))*.2,STN_power_data{9})
 title('STN Beta Power in Controlled Movements (021417a - 200ms res.)')
 xlabel('Time (s)')
@@ -66,7 +66,7 @@ for i = 1:length(STN_beeps_data{9})
     end
 end
 
-subplot(2,1,2)
+subplot(2,1,1)
 plot((1:length(M1_power_data{9}))*.2,M1_power_data{9})
 title('M1 Beta Power in Controlled Movements (021417a - 200ms res.)')
 xlabel('Time (s)')
